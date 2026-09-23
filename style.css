@@ -9,9 +9,11 @@
 
 body {
   background-image: url(BG.png);
-  background-size: cover;
+  background-size: fit;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center, bottom;
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
 h1 {
@@ -117,6 +119,12 @@ h1 {
 
 .carousel-btn:hover img {
   transform: scale(1.15);
+  transition: transform 0.1s ease;
+}
+
+.carousel-btn:active img {
+  transform: scale(1);
+  transition: transform 0.1s ease;
 }
 
 /* Push buttons outside onto the background beside the box */

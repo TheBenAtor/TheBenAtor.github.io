@@ -19,3 +19,13 @@ function moveSlide(direction) {
   // Add active status to new slide
   slides[currentSlideIndex].classList.add('active');
 }
+
+const scrollPosition = window.pageYOffset;
+  // Adjust the 0.3 multiplier to control parallax speed
+  document.body.style.backgroundPositionY = -(scrollPosition * 0.3) + 'px';
+
+window.addEventListener('scroll', function() {
+  const scrollPosition = window.pageYOffset;
+  // Adjust the 0.3 multiplier to control parallax speed
+  document.body.style.backgroundPositionY = -(scrollPosition * 0.3) + 'px';
+});
