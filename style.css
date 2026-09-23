@@ -3,92 +3,70 @@
   src: url(OXYGENE1.TTF) format("truetype");
 }
 @font-face {
-    font-family: "Pusab";
-    src: url(PUSAB.otf) format("opentype");
-  
+  font-family: "Pusab";
+  src: url(PUSAB.otf) format("opentype");
 }
 
 body {
   background-image: url(BG.png);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center,
-
+  background-position: center;
 }
 
 h1 {
-  font-family: "Oxygene1", sans-serif; /* Added fallback font */
+  font-family: "Oxygene1", sans-serif;
   font-size: 100px;
   color: #B3F245;
   text-align: center;
   -webkit-text-stroke: rgb(0, 0, 0);
   -webkit-text-stroke-width: 0.5px;
-  
 }
 
-  .textured-box {
-    /* 1. Create a gap between the box and the edges of the screen */
-    margin: 40px auto; 
-    
-    /* 2. Restrict the maximum width so it doesn't stretch infinitely */
-    max-width: 600px; 
-    width: 90%; /* Responsive fallback for smaller screens */
-  
-    /* 9-slice setup */
-    border: 24px solid transparent; 
-    border-image-source: url('Textbox.png');
-    border-image-slice: 24 fill; 
-    border-image-repeat: stretch; 
-    
-    /* Internal spacing for text */
-    padding: 20px; 
-    text-align: center;
-    
-    /* Text styling */
-    color: #fff;
-    font-family: "Pusab";
-  }
-
-p {
- 
+/* 1. Outer container matches textured-box width and centering */
+.carousel-wrapper {
+  position: relative;
+  max-width: 600px; 
+  width: 90%;
+  margin: 30px auto;
 }
 
+/* 2. Uniform textured box rules for all three boxes */
 .textured-box {
-  /* 1. Define a transparent border thickness that matches border size */
+  margin: 30px auto; 
+  max-width: 600px; 
+  width: 90%; 
+  box-sizing: border-box; /* Ensures padding & borders stay aligned */
+  
   border: 24px solid transparent; 
-  
-  /* 2. Apply the 9-slice texture */
   border-image-source: url('Textbox.png');
-  
-  /* 3. Slice the image (measured in pixels from each edge) */
   border-image-slice: 24 fill; 
-  
-  /* 4. Tell the edges to repeat or stretch, while corners stay fixed */
   border-image-repeat: stretch; 
   
-  /* Padding for text inside the box */
   padding: 10px;
+  text-align: center;
   color: #fff;
   font-family: "Pusab";
 }
 
+/* Override margin for the box inside the wrapper so spacing stays consistent */
+.carousel-wrapper .textured-box {
+  margin: 0 auto;
+  width: 100%;
+}
+
 .screenshot-carousel {
   position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  width: 100%;
 }
 
 .carousel-track {
   position: relative;
   width: 100%;
-  height: 450px; /* Force a consistent height for your panel */
-  aspect-ratio: 16 / 9; /* FIX: Forces the container to perfectly match standard widescreen media */
+  height: 350px; 
+  aspect-ratio: 16 / 9; 
   background-color: transparent;
 }
-
 
 .carousel-slide {
   position: absolute;
@@ -99,53 +77,62 @@ p {
   opacity: 0;
   transition: opacity 0.4s ease-in-out;
   display: flex;
-  flex-direction: column; /* Allows titles to sit neatly above or below your images */
+  flex-direction: column; 
   justify-content: center;
   align-items: center;
 }
 
-/* Show the current slide */
 .carousel-slide.active {
   opacity: 1;
   position: relative;
+  z-index: 10000;
 }
 
 .carousel-slide img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Prevents screenshots from stretching out of proportion */
+  object-fit: contain; 
+  border-radius: 10px;
 }
 
-/* Button Styling */
+/* Floating side buttons on the page background */
 .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  background: transparent;
   border: none;
-  padding: 16px;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
   cursor: pointer;
-  font-size: 18px;
-  border-radius: 50%;
-  user-select: none;
-  transition: background-color 0.2s;
+  z-index: 10000;
 }
 
-.carousel-btn:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+.carousel-btn img {
+  width: 60px; 
+  height: auto;
+  transition: transform 0.2s ease;
 }
 
-.prev-btn { left: 10px; 
-  z-index: 10000;}
-.next-btn { right: 10px; 
-  z-index: 10000;}
+.carousel-btn:hover img {
+  transform: scale(1.15);
+}
+
+/* Push buttons outside onto the background beside the box */
+.prev-btn { 
+  left: -70px; 
+}
+
+.next-btn { 
+  right: -70px; 
+}
 
 .video-container {
   position: relative;
   width: 100%;
-  max-width: 700px; /* Adjust this to match your screenshot sizing */
-  aspect-ratio: 16 / 9; /* Matches standard landscape video shapes */
+  max-width: 700px; 
+  aspect-ratio: 16 / 9; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -157,10 +144,5 @@ p {
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 6px; /* Optional: gives the video slightly rounded corners */
-}
-
-iframe {
-  position: center;
-  z-index: 9999;
+  border-radius: 10px; 
 }
