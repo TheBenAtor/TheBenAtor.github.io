@@ -22,10 +22,10 @@ function moveSlide(direction) {
 
 const scrollPosition = window.pageYOffset;
   // Adjust the 0.3 multiplier to control parallax speed
-  document.body.style.backgroundPositionY = -(scrollPosition * 0.3) + 'px';
+  document.body.style.backgroundPositionY = -(scrollPosition * 0.1) + 'px';
 
 window.addEventListener('scroll', function() {
   const scrollPosition = window.pageYOffset;
   // Adjust the 0.3 multiplier to control parallax speed
-  document.body.style.backgroundPositionY = -(scrollPosition * 0.3) + 'px';
+  document.body.style.backgroundPositionY = -(scrollPosition * 0.1) + 'px';
 });
