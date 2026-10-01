@@ -12,7 +12,7 @@
   }
   
   body {
-    background-image: url(Assets/BG.png);
+    background-image: url(Assets/Base/BG.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center, bottom;
@@ -70,7 +70,7 @@
     
     /* Custom Border Image Setup */
     border: 24px solid transparent; 
-    border-image-source: url('Assets/Textbox.png');
+    border-image-source: url('Assets/Base/Textbox.png');
     border-image-slice: 40 fill; 
     border-image-repeat: stretch; 
     
@@ -361,13 +361,14 @@ img {
   left: 20px;
   z-index: 99999; /* Keeps the icons above all page content */
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 10px;
   background: rgba(0, 0, 0, 0.4);
   padding: 8px 12px;
   border-radius: 12px;
   backdrop-filter: blur(4px); /* Subtle blur behind the panel */
   border: 2px solid rgba(255, 255, 255, 0.2);
+  max-height: 100vh;
 }
 
 .socials-container a img {
@@ -375,6 +376,8 @@ img {
   height: 42px;
   display: block;
   transition: transform 0.2s ease, filter 0.2s ease;
+  max-height: 7vh;
+  max-width: 7vh;
 }
 
 .socials-container a:hover img {
@@ -399,4 +402,64 @@ img {
     width: 34px;
     height: 34px;
   }
+}
+
+/* ==========================================================================
+   DEMONLIST STYLES
+   ========================================================================== */
+   .demonlist-box {
+    max-width: 725px;
+}
+
+#demonlist-container {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.demon-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.demon-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-family: "Pusab", Arial, sans-serif;
+    color: white;
+    text-shadow: 2px 2px 0px #000;
+}
+
+.demon-rank {
+    color: #ffde00;
+    font-size: 1.1rem;
+    font-weight: bold;
+    min-width: 45px;
+    text-align: left;
+}
+
+.demon-name {
+    font-size: 1.1rem;
+    flex-grow: 1;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.demon-publisher {
+    font-size: 0.85rem;
+    color: #cccccc;
+    text-align: right;
+}
+
+.loading-text, .error-text {
+    font-family: "Pusab", Arial, sans-serif;
+    color: white;
+    text-shadow: 2px 2px 0px #000;
 }
